@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class Notices</title>
+</head>
+<body>
+    <h1>Post a Notice</h1>
+    <form method="POST">
+        <input type="text" name="title" placeholder="Title" required><br>
+        <textarea name="message" placeholder="Message" required></textarea><br>
+        <label>
+            <input type="checkbox" name="reminder"> Needs reminders?
+        </label><br>
+        <input type="date" name="deadline"><br>
+        <button type="submit">Send</button>
+    </form>
+
+    <h2>Active Notices</h2>
+    <ul>
+        {% for notice in notices %}
+        <li>
+            {{ notice.title }} ({{ notice.status }})
+            {% if notice.needs_reminder %}[🔔 Reminders ON]{% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
